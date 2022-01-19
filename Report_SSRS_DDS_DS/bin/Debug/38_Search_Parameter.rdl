@@ -6,25 +6,29 @@
     <DataSource Name="DS_DDS">
       <DataSourceReference>DS_DDS</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>2f250bf3-ab1f-4f6b-ad9c-8df849ce4f0b</rd:DataSourceID>
+      <rd:DataSourceID>8938f8a3-3f98-4533-adf9-4301a4ff890c</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DS_Prod">
+    <DataSet Name="DSET_Search">
       <Query>
         <DataSourceName>DS_DDS</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@Region">
-            <Value>=Parameters!Region.Value</Value>
+          <QueryParameter Name="@CategoryName">
+            <Value>=Parameters!CategoryName.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        DimProducts.ProductName, FactSale.Quantity, FactSale.UnitPrice, FactSale.SalesAmount, DimSuppliers.Region
+        <CommandText>SELECT        DimCategories.CategoryName, DimProducts.ProductName, FactSale.Quantity, FactSale.UnitPrice, FactSale.Discount
 FROM            DimProducts INNER JOIN
                          FactSale ON DimProducts.ProductKey = FactSale.ProductKey INNER JOIN
-                         DimSuppliers ON DimProducts.SupplierKey = DimSuppliers.SupplierKey
-Where DimSuppliers.Region = @Region OR @Region is NULL</CommandText>
+                         DimCategories ON DimProducts.CategoryKey = DimCategories.CategoryKey
+Where DimCategories.CategoryName like '%'+@CategoryName+'%'</CommandText>
       </Query>
       <Fields>
+        <Field Name="CategoryName">
+          <DataField>CategoryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ProductName">
           <DataField>ProductName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -37,26 +41,9 @@ Where DimSuppliers.Region = @Region OR @Region is NULL</CommandText>
           <DataField>UnitPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="SalesAmount">
-          <DataField>SalesAmount</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="Region">
-          <DataField>Region</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DSET_Region">
-      <Query>
-        <DataSourceName>DS_DDS</DataSourceName>
-        <CommandText>SELECT DISTINCT Region
-FROM            DimSuppliers</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Region">
-          <DataField>Region</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Discount">
+          <DataField>Discount</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -69,19 +56,19 @@ FROM            DimSuppliers</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.95833in</Width>
+                  <Width>2.89583in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.79167in</Width>
+                  <Width>0.88542in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.77083in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.03125in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.79167in</Width>
+                  <Width>2.6875in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -99,6 +86,7 @@ FROM            DimSuppliers</CommandText>
                                 <TextRun>
                                   <Value>Product Name</Value>
                                   <Style>
+                                    <FontStyle>Italic</FontStyle>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -130,8 +118,9 @@ FROM            DimSuppliers</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Quantity</Value>
+                                  <Value>Discount</Value>
                                   <Style>
+                                    <FontStyle>Italic</FontStyle>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -163,8 +152,9 @@ FROM            DimSuppliers</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Unit Price</Value>
+                                  <Value>Quantity</Value>
                                   <Style>
+                                    <FontStyle>Italic</FontStyle>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -189,15 +179,16 @@ FROM            DimSuppliers</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="Textbox7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Sales Amount</Value>
+                                  <Value>Unit Price</Value>
                                   <Style>
+                                    <FontStyle>Italic</FontStyle>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -206,7 +197,7 @@ FROM            DimSuppliers</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -223,15 +214,16 @@ FROM            DimSuppliers</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox10">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Region</Value>
+                                  <Value>Category Name</Value>
                                   <Style>
+                                    <FontStyle>Italic</FontStyle>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -240,7 +232,7 @@ FROM            DimSuppliers</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -292,6 +284,39 @@ FROM            DimSuppliers</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Discount">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Discount.Value</Value>
+                                  <Style>
+                                    <Format>'$'0.00;('$'0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Discount</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Quantity">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -331,6 +356,7 @@ FROM            DimSuppliers</CommandText>
                                 <TextRun>
                                   <Value>=Fields!UnitPrice.Value</Value>
                                   <Style>
+                                    <FontFamily>Arial</FontFamily>
                                     <Format>'$'0.00;('$'0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -355,48 +381,14 @@ FROM            DimSuppliers</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SalesAmount">
+                        <Textbox Name="CategoryName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!SalesAmount.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <Format>'$'0.00;('$'0.00)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SalesAmount</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                            <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Region">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Region.Value</Value>
+                                  <Value>=Fields!CategoryName.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -405,7 +397,7 @@ FROM            DimSuppliers</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Region</rd:DefaultName>
+                          <rd:DefaultName>CategoryName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -442,11 +434,11 @@ FROM            DimSuppliers</CommandText>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DS_Prod</DataSetName>
-            <Top>0.74875in</Top>
-            <Left>0.3425in</Left>
+            <DataSetName>DSET_Search</DataSetName>
+            <Top>0.89458in</Top>
+            <Left>0.22792in</Left>
             <Height>0.5in</Height>
-            <Width>6.34375in</Width>
+            <Width>8.46875in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -457,7 +449,7 @@ FROM            DimSuppliers</CommandText>
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>7.0925in</Width>
+      <Width>9.20833in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -468,17 +460,9 @@ FROM            DimSuppliers</CommandText>
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="Region">
+    <ReportParameter Name="CategoryName">
       <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>Region</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DSET_Region</DataSetName>
-          <ValueField>Region</ValueField>
-          <LabelField>Region</LabelField>
-        </DataSetReference>
-      </ValidValues>
+      <Prompt>Category Name</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -487,13 +471,13 @@ FROM            DimSuppliers</CommandText>
       <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
+          <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>Region</ParameterName>
+          <ParameterName>CategoryName</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>004a6f64-61cc-4236-8f32-d5b4f7524ea6</rd:ReportID>
+  <rd:ReportID>59d1f936-8c54-4f2a-86a6-10aea998c7e1</rd:ReportID>
 </Report>

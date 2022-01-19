@@ -49,6 +49,9 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSet Include="DSET_Mapping_Report.rsd" />
+  </ItemGroup>
+  <ItemGroup>
     <DataSource Include="DS_DDS.rds" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +74,17 @@
     <Report Include="32_Cascade_Parameter.rdl" />
     <Report Include="33_Allow_Null_Value.rdl" />
     <Report Include="34_ShowAll_Record_noParameter_Filter_Record_ParameterProvided_.rdl" />
+    <Report Include="35-1_Detail.rdl" />
+    <Report Include="35_DrillThough_Mapping_Report.rdl" />
+    <Report Include="36_Stored_Procedure.rdl" />
+    <Report Include="37_Stored_Procedure_MultiValue.rdl" />
+    <Report Include="38_Search_Parameter.rdl" />
+    <Report Include="39_Show_NullValue_forMultiValue_Parameter.rdl" />
+    <Report Include="40_Deafault_MultiValue_Parameter.rdl" />
+    <Report Include="41_AddRemoveRename_Parameter_.rdl" />
+    <Report Include="42-1_MainReport_.rdl" />
+    <Report Include="42_SubReport_CalL_In_MainReport_.rdl" />
+    <Report Include="43_IfFunc_RowNumber__.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

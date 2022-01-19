@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="DSET_Mapping_Report">
+    <Query>
+      <DataSourceReference>DS_DDS</DataSourceReference>
+      <CommandText>SELECT        DimSuppliers.Region, DimSuppliers.Country, DimSuppliers.City, DimSuppliers.CompanyName, DimCategories.CategoryName, DimProducts.ProductName, DimShippers.ShipperKey, FactSale.Quantity, FactSale.UnitPrice
+FROM            DimCategories INNER JOIN
+                         DimProducts ON DimCategories.CategoryKey = DimProducts.CategoryKey INNER JOIN
+                         DimSuppliers ON DimProducts.SupplierKey = DimSuppliers.SupplierKey INNER JOIN
+                         FactSale ON DimProducts.ProductKey = FactSale.ProductKey INNER JOIN
+                         DimShippers ON FactSale.ShipperKey = DimShippers.ShipperKey</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Region">
+        <DataField>Region</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Country">
+        <DataField>Country</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="City">
+        <DataField>City</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CompanyName">
+        <DataField>CompanyName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CategoryName">
+        <DataField>CategoryName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ProductName">
+        <DataField>ProductName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ShipperKey">
+        <DataField>ShipperKey</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Quantity">
+        <DataField>Quantity</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="UnitPrice">
+        <DataField>UnitPrice</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
