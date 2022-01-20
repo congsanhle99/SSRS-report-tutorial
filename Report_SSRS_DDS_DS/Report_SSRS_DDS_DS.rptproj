@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="DS_DDS.rds" />
+    <DataSource Include="DS_Tutorial.rds" />
   </ItemGroup>
   <ItemGroup>
     <Report Include="15_Basic_SSRS.rdl" />
@@ -85,6 +86,14 @@
     <Report Include="42-1_MainReport_.rdl" />
     <Report Include="42_SubReport_CalL_In_MainReport_.rdl" />
     <Report Include="43_IfFunc_RowNumber__.rdl" />
+    <Report Include="44_RunningValue_Group_.rdl" />
+    <Report Include="45_Replace_NullValue.rdl" />
+    <Report Include="46_Hide_EmptyRow.rdl" />
+    <Report Include="47_IIf_Switch.rdl" />
+    <Report Include="48_Report_MutilParameter_JoinFunction.rdl" />
+    <Report Include="49-50-51.rdl" />
+    <Report Include="52.rdl" />
+    <Report Include="53_CeilingFunc_.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
