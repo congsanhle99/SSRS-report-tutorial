@@ -12,7 +12,7 @@
     <TargetDatasetFolder>Datasets</TargetDatasetFolder>
     <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
     <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
-    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+    <TargetServerURL>http://lcsanh/ReportServer</TargetServerURL>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
@@ -94,6 +94,21 @@
     <Report Include="49-50-51.rdl" />
     <Report Include="52.rdl" />
     <Report Include="53_CeilingFunc_.rdl" />
+    <Report Include="54_.rdl" />
+    <Report Include="55_.rdl" />
+    <Report Include="56_Img_Click.rdl" />
+    <Report Include="57_Hide_ColUsing_Parameter.rdl" />
+    <Report Include="60_Col_Chart.rdl" />
+    <Report Include="61_ColChart_MinMax_Value.rdl" />
+    <Report Include="62_Format_Text_Same_TextBox.rdl" />
+    <Report Include="63_Report_Select_Parameter.rdl" />
+    <Report Include="65_Stacked_ColChart.rdl" />
+    <Report Include="66_Total_StackedChart_.rdl" />
+    <Report Include="67_Combine_ColChart_with_BarChart.rdl" />
+    <Report Include="68_Plot_MutilLine_Graph_.rdl" />
+    <Report Include="70-78_PieBarAreaScatterChart_Express_ShowTooltipPercentage.rdl" />
+    <Report Include="91_Bookmarks.rdl" />
+    <Report Include="93_Auto_Refresh.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

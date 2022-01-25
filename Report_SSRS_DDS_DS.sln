@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report_SSRS_DDS_DS", "Report_SSRS_DDS_DS\Report_SSRS_DDS_DS.rptproj", "{8E755065-AFC7-4A8E-9356-6790179D5F0B}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report_AdventureBook2016", "Report_AdventureBook2016\Report_AdventureBook2016.rptproj", "{A9009C9D-A1FA-435A-8434-683FD3050A82}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report_Dashboard", "Report_Dashboard\Report_Dashboard.rptproj", "{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Default = Debug|Default
@@ -20,6 +24,22 @@ Global
 		{8E755065-AFC7-4A8E-9356-6790179D5F0B}.Release|Default.ActiveCfg = Release
 		{8E755065-AFC7-4A8E-9356-6790179D5F0B}.Release|Default.Build.0 = Release
 		{8E755065-AFC7-4A8E-9356-6790179D5F0B}.Release|Default.Deploy.0 = Release
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.Debug|Default.ActiveCfg = Debug
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.Debug|Default.Build.0 = Debug
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.Debug|Default.Deploy.0 = Debug
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.DebugLocal|Default.Build.0 = DebugLocal
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.Release|Default.ActiveCfg = Release
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.Release|Default.Build.0 = Release
+		{A9009C9D-A1FA-435A-8434-683FD3050A82}.Release|Default.Deploy.0 = Release
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.Debug|Default.ActiveCfg = Debug
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.Debug|Default.Build.0 = Debug
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.Debug|Default.Deploy.0 = Debug
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.DebugLocal|Default.Build.0 = DebugLocal
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.Release|Default.ActiveCfg = Release
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.Release|Default.Build.0 = Release
+		{06BEC4E0-3FAF-4F0D-B035-9571B8F09DC2}.Release|Default.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
